@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from sys import argv
+from functools import reduce
 
 
 tests = [
@@ -12,6 +13,10 @@ tests = [
 def parse(filename):
     file_data = open(filename).read()
     return [int(x) for x in file_data.split()]
+
+# This does exactly the same as the other 'solve' function, but I think it's more readable
+def tarkadaal_solve(data): 
+    return reduce(lambda acc, x: acc + x, data)
 
 def solve(data):
     result = 0
