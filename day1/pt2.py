@@ -6,7 +6,7 @@ from functools import reduce
 tests = [
     ([+1, -2, +3, +1], 2),
     ([+1, -1], 0),
-    ([+3, +3, +4, -2, -4], 100),
+    ([+3, +3, +4, -2, -4], 10),
     ([-6, +3, +8, +5, -6], 5),
     ([+7, +7, -2, -7, -4], 14),
 ]
@@ -16,26 +16,21 @@ def parse(filename):
     file_data = open(filename).read()
     return [int(x) for x in file_data.split()]
 
-# This does exactly the same as the other 'solve' function, but I think it's more readable
-
-
-def tarkadaal_solve(data):
-    return reduce(lambda acc, x: acc + x, data)
 
 
 def solve(data):
     result = 0
     i = 0
-    s = set()
+    s = set([0])
     while True:
         index = i % len(data)
         number = data[index]
         result = result + number
         if result in s:
+            print(result)
             return result
         s.add(result)
         i = i + 1
-    return result
 
 
 def run_test(test):
