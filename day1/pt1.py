@@ -15,7 +15,7 @@ def parse(filename):
     return [int(x) for x in file_data.split()]
 
 # This does exactly the same as the other 'solve' function, but I think it's more readable
-def tarkadaal_solve(data): 
+def tarkadaal_solve(data):
     return reduce(lambda acc, x: acc + x, data)
 
 def solve(data):
@@ -42,4 +42,3 @@ if __name__ == '__main__':
     name = argv[1]
     filename = 'input_' + name + '.txt'
     main(filename)
-
