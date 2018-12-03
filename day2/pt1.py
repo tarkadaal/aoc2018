@@ -43,7 +43,7 @@ def has_two_matching(results):
 def has_three_matching(results):
     return 3 in results.values()
 
-def solve(data):
+def karaden_solve(data):
     total_two = 0
     total_three = 0
     for line in data:
@@ -54,28 +54,28 @@ def solve(data):
             total_three += 1
     return total_three * total_two
 
-def alt_solve(data):
+def tarkadaal_solve(data):
     all_counts = [count_chars(x) for x in data]
     all_twos = [has_two_matching(x) for x in all_counts].count(True)
     all_threes = [has_three_matching(x) for x in all_counts].count(True)
     return all_twos * all_threes
 
 def run_test(test):
-    data, expected_two_match, expected_three_match =  test
+    data, expected_two_match, expected_three_match = test
     counts = count_chars(data)
     actual_two_match = has_two_matching(counts)
     actual_three_match = has_three_matching(counts)
     return actual_two_match == expected_two_match and actual_three_match == expected_three_match
 
 def run_all_tests():
-    return all([run_test(x) for x in tests]) and checksum == alt_solve([x[0] for x in tests])
+    return all([run_test(x) for x in tests]) and checksum == karaden_solve([x[0] for x in tests])
 
 
 def main(filename):
     print('Day 2 exercise 1!')
     if run_all_tests():
         data = parse(filename)
-        print("Result is: {}".format(alt_solve(data)))
+        print("Result is: {}".format(karaden_solve(data)))
     else:
         print('We be fucked')
 
