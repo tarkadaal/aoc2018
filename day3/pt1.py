@@ -42,25 +42,29 @@ def parse(filename):
     return [parse_line(x) for x in file_data.split('\n') if x]
 
 
-def calculate_coords(xpos, ypos, xlength, ylength, coord_set):
-    collision_count = 0
+def calculate_coords(xpos, ypos, xlength, ylength, coord_dict):
+    
 
     for j in range(1, ylength+1):
         for i in range(1, xlength+1):
             coord = (xpos+i, ypos+j)
-            if coord in coord_set:
-                collision_count += 1;
+            if coord in coord_dict:
+                coord_dict[coord] += 1
             else:
-                coord_set.add(coord)
+                coord_dict[coord] = 1
 
-    return collision_count
+    return
 
 def solve(data):
-    coord_set = set()
+    coord_dict = dict()
     total_collision = 0
     for line in data:
-        total_collision += calculate_coords(line.x, line.y, line.xlength, line.ylength, coord_set)
+        calculate_coords(line.x, line.y, line.xlength, line.ylength, coord_dict)
     
+    # count all entries in dict with value of 2 or more
+    for line in coord_dict:
+        if coord_dict[line] > 1:
+            total_collision += 1
     return total_collision
 
 def run_test():
