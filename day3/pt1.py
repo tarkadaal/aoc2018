@@ -30,6 +30,21 @@ def parse(filename):
     return [x for x in file_data.split()]
 
 
+def calculate_coords(xpos, ypos, xlength, ylength):
+    coord_set = set()
+    collision_count = 0
+
+    for (j in range(1, ylength+1))
+        for(i in range(1, xlength+1))
+            coord = (xpos+i, ypos+j)
+            if coord in coord_set
+                collision_count += 1;
+            else
+                coord_set.add()
+
+    return collision_count
+
+
 # def solve_one(first, second):
 #     return ''.join([f for f, s in zip(first, second) if f == s])
 
